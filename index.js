@@ -9,7 +9,9 @@ const Fs = require('fs');
 const Path = require('path');
 const Exec = Util.promisify(require('child_process').exec);
 
-//TODO add tests, test correct output, test correct detection, test suggestions?
+//TODO Add fancy header as welcome message
+//TODO add tests, test correct output, test correct detection, test suggestions, eslint for code qualitity
+
 //TODO logic to merge requirements if several options are used + update dependecies if necessary
 //TODO add a way to re-use already defined dependencies
 
@@ -24,7 +26,7 @@ var aTools = []
 
 //Check input parameters
 if (process.argv.length <= 2) {
-  console.log(`Please select an option. Possible values are:\n\r`)
+  console.log(`Please select an option. Possible values are: `)
 
   Fs.readdir(Path.join(__dirname, 'options'), function(err, files) {
     if (err) {
@@ -33,14 +35,11 @@ if (process.argv.length <= 2) {
     files.forEach(function(file) {
       console.log(file.replace(/\.js/, ''));
     });
-
-    console.log(`\n\rExample: npx check-sap-cloud-readiness -codejam-cap`)
   });
   return;
 }
-
 process.argv.slice(2).forEach(function(val) {
-  let aNewTools = require('./options/' + val.replace('-', ''));
+  let aNewTools = require('./options/' + val.replace('--', ''));
   aTools = aTools.concat(aNewTools);
 });
 
@@ -79,8 +78,12 @@ function startCheck() {
             bClear = false;
             aMissingTools.push(oTool);
           }
-        }).catch(() => { }); // do nothing for now
+        }).catch(() => {
+          bClear = false;
+          aMissingTools.push(oTool);
+        });
     })
+  
 
   Promise.all(aPromises).then(function() {
     console.log(oTable.toString());
@@ -95,4 +98,3 @@ function startCheck() {
 }
 
 startCheck();
-// setTimeout(startCheck, 2000); //for debugging

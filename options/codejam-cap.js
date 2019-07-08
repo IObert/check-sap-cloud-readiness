@@ -29,12 +29,6 @@ module.exports = [{
   minVersion: "3.24.0",
   url: "https://www.sqlite.org/download.html"
 }, {
-  name: "MTA Build Tool",
-  command: "mbt -v",
-  parser: null,
-  minVersion: "0.2.5",
-  url: "https://sap.github.io/cloud-mta-build-tool/download/"
-}, {
   name: "Windows Build Tools",
   command: "npm ls -g --depth=0",
   parser: "windows-build-tools",

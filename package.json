@@ -19,9 +19,9 @@
     "author": "SAP",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.wdf.sap.corp/D056949/check-sap-cloud-readiness/issues"
+        "url": "https://github.com/SAP/check-sap-cloud-readiness/issues"
     },
-    "homepage": "https://github.wdf.sap.corp/D056949/check-sap-cloud-readiness#readme",
+    "homepage": "https://github.com/SAP/check-sap-cloud-readiness#readme",
     "dependencies": {
         "chalk": "^2.4.2",
         "cli-table3": "^0.5.1",

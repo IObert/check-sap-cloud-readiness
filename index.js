@@ -9,7 +9,7 @@ const Fs = require('fs');
 const Path = require('path');
 const Exec = Util.promisify(require('child_process').exec);
 
-//TODO add tests, test correct output, test correct detection, test suggestions?
+//TODO add tests, test correct output, test correct detection, test suggestions, eslint for code qualitity
 //TODO logic to merge requirements if several options are used + update dependecies if necessary
 //TODO add a way to re-use already defined dependencies
 
@@ -38,7 +38,6 @@ if (process.argv.length <= 2) {
   });
   return;
 }
-
 process.argv.slice(2).forEach(function(val) {
   let aNewTools = require('./options/' + val.replace('-', ''));
   aTools = aTools.concat(aNewTools);
@@ -79,8 +78,12 @@ function startCheck() {
             bClear = false;
             aMissingTools.push(oTool);
           }
-        }).catch(() => { }); // do nothing for now
+        }).catch(() => {
+          bClear = false;
+          aMissingTools.push(oTool);
+        });
     })
+  
 
   Promise.all(aPromises).then(function() {
     console.log(oTable.toString());
@@ -95,4 +98,3 @@ function startCheck() {
 }
 
 startCheck();
-// setTimeout(startCheck, 2000); //for debugging

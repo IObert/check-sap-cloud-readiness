@@ -1,6 +1,6 @@
 {
     "name": "check-sap-cloud-readiness",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Tool to check whether all required tools has been installed for CAP development",
     "main": "index.js",
     "scripts": {

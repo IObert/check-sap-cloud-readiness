@@ -73,6 +73,7 @@ function startCheck() {
             } else {
               bClear = false;
               oLine[3] = Chalk.bold.yellow('Outdated!');
+              aMissingTools.push(oTool);
             }
           } else {
             bClear = false;

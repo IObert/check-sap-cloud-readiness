@@ -29,6 +29,18 @@ module.exports = [{
   minVersion: "3.24.0",
   url: "https://www.sqlite.org/download.html"
 }, {
+  name: "Visual Studio Code",
+  command: "code -v",
+  parser: null,
+  minVersion: "1.30.0",
+  url: "https://code.visualstudio.com/"
+}, {
+  name: "CDS Extension for VS Code",
+  command: "code --list-extensions --show-versions",
+  parser: "SAPSE.vscode-cds",
+  minVersion: "1.2.0",
+  url: "https://tools.hana.ondemand.com/#cloud"
+}, {
   name: "Windows Build Tools",
   command: "npm ls -g --depth=0",
   parser: "windows-build-tools",

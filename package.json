@@ -10,8 +10,18 @@
     "bin": {
         "check-sap-cap-readiness": "index.js"
     },
-    "author": "",
-    "license": "ISC",
+    "keywords": [
+        "sap",
+        "sapcloudplatform",
+        "cloudfoundry",
+        "environmentcheck"
+    ],
+    "author": "SAP",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.wdf.sap.corp/D056949/check-sap-cloud-readiness/issues"
+    },
+    "homepage": "https://github.wdf.sap.corp/D056949/check-sap-cloud-readiness#readme",
     "dependencies": {
         "chalk": "^2.4.2",
         "cli-table3": "^0.5.1",

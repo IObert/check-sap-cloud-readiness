@@ -65,6 +65,11 @@ function startCheck() {
       return Exec(oTool.command)
         .then((oResult) => {
           sUnparsed = oTool.parser ? oResult.stdout.grepFirstLine(oTool.parser) : oResult.stdout;
+          if(oTool.skipVersion){
+            oLine[2] = '-';
+            oLine[3] = Chalk.bold.green('OK');
+            return;
+          }
           if (reVersionString.test(sUnparsed)) {
             let iInstalledVersion = sUnparsed.match(reVersionString)[0];
             oLine[1] = iInstalledVersion;
@@ -84,7 +89,7 @@ function startCheck() {
           aMissingTools.push(oTool);
         });
     })
-  
+
 
   Promise.all(aPromises).then(function() {
     console.log(oTable.toString());

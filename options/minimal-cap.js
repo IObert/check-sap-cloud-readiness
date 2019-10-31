@@ -38,7 +38,7 @@ module.exports = [{
   name: "Windows Build Tools",
   command: "npm ls -g --depth=0",
   parser: "windows-build-tools",
-  minVersion: "5.1.0",
+  minVersion: "4.0.0",
   platform: "win32",
   url: "https://www.npmjs.com/package/windows-build-tools"
 }];

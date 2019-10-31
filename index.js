@@ -99,6 +99,9 @@ function startCheck() {
     } else {
       console.log(Chalk.bold.red('Not all required tools are installed and up to date, please fix these issues.'));
       aMissingTools.forEach((oTool) => console.log(TerminalLink(oTool.name, oTool.url)));
+
+    
+      console.log(Chalk.bold('If you think you installed all tools property, please check your PATH variable to make sure the tools are referenced there.'));
     }
   });
 }

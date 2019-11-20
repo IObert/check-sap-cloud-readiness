@@ -46,11 +46,18 @@ module.exports = [{
   parser: "SAPSE.vscode-cds",
   minVersion: "1.2.0",
   url: "https://tools.hana.ondemand.com/#cloud"
+  // }, {
+  //   name: "Windows Build Tools",
+  //   command: "npm ls -g --depth=0",
+  //   parser: "windows-build-tools",
+  //   minVersion: "4.0.0",
+  //   platform: "win32",
+  //   url: "https://www.npmjs.com/package/windows-build-tools"
 }, {
   name: "Windows Build Tools",
-  command: "npm ls -g --depth=0",
-  parser: "windows-build-tools",
-  minVersion: "4.0.0",
+  command: "choco search microsoft-build-tools --exact",
+  parser: "microsoft-build-tools",
+  minVersion: "15.0.0",
   platform: "win32",
-  url: "https://www.npmjs.com/package/windows-build-tools"
+  url: "https://chocolatey.org/packages/microsoft-build-tools#install"
 }];

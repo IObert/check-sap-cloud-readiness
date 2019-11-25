@@ -13,7 +13,7 @@ module.exports = [{
 }, {
   name: "Core Data Services CLI",
   command: "cds -v",
-  parser: null,
+  parser: "@sap/cds:",
   minVersion: "3.0.0",
   url: "https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e7806faa5ea24746a52aeb15da92c02f.html"
 }, {

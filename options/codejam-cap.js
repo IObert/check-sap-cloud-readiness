@@ -32,7 +32,7 @@ module.exports = [{
   name: "SQLite",
   command: "sqlite3 -version",
   parser: null,
-  minVersion: "3.24.0",
+  minVersion: "3.9.0",
   url: "https://www.sqlite.org/download.html"
 }, {
   name: "Visual Studio Code",

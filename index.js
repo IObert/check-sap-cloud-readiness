@@ -13,8 +13,10 @@ const Exec = Util.promisify(require('child_process').exec);
 //TODO logic to merge requirements if several options are used + update dependecies if necessary
 //TODO add a way to re-use already defined dependencies
 
+const sleep = require('util').promisify(setTimeout)
+
 //Helpers
-String.prototype.grepFirstLine = function(sTerm) {
+String.prototype.grepFirstLine = function (sTerm) {
   return this.split(/\n/).find((s) => s.indexOf(sTerm) > -1)
 };
 const reVersionString = /(\d+\.)?(\d+\.)(\*|\d+)/;
@@ -26,11 +28,11 @@ var aTools = []
 if (process.argv.length <= 2) {
   console.log(`Please select an option. Possible values are:\n\r`)
 
-  Fs.readdir(Path.join(__dirname, 'options'), function(err, files) {
+  Fs.readdir(Path.join(__dirname, 'options'), function (err, files) {
     if (err) {
       return console.log('Unable to scan directory: ' + err);
     }
-    files.forEach(function(file) {
+    files.forEach(function (file) {
       console.log(file.replace(/\.js/, ''));
     });
 
@@ -38,7 +40,7 @@ if (process.argv.length <= 2) {
   });
   return;
 }
-process.argv.slice(2).forEach(function(val) {
+process.argv.slice(2).forEach(function (val) {
   let aNewTools = require('./options/' + val.replace('-', ''));
   aTools = aTools.concat(aNewTools);
 });
@@ -54,18 +56,19 @@ const oTable = new Table({
   colWidths: [30, 13, 13, 13]
 });
 
-function startCheck() {
+async function startCheck() {
+  // await sleep(4000);
   console.log(Chalk.bgBlackBright.cyan('Performing check now... \n\r\n\r'));
   const aPromises = aTools
     .filter((oTool) => {
       return oTool.platform ? oTool.platform === process.platform : true; // pass if platform prooperty isn't defined or equal to the current platform
     }).map((oTool) => {
-      const oLine = [oTool.name, "-", oTool.minVersion, Chalk.bold.red('Missing!')];
+      const oLine = [oTool.name, "-", oTool.minVersion || "-", Chalk.bold.red('Missing!')];
       oTable.push(oLine)
       return Exec(oTool.command)
         .then((oResult) => {
           sUnparsed = oTool.parser ? oResult.stdout.grepFirstLine(oTool.parser) : oResult.stdout;
-          if(oTool.skipVersion){
+          if (oTool.skipVersion && sUnparsed) {
             oLine[2] = '-';
             oLine[3] = Chalk.bold.green('OK');
             return;
@@ -91,7 +94,7 @@ function startCheck() {
     })
 
 
-  Promise.all(aPromises).then(function() {
+  Promise.all(aPromises).then(function () {
     console.log(oTable.toString());
     console.log(); //add line break
     if (bClear) {
@@ -100,7 +103,7 @@ function startCheck() {
       console.log(Chalk.bold.red('Not all required tools are installed and up to date, please fix these issues.'));
       aMissingTools.forEach((oTool) => console.log(TerminalLink(oTool.name, oTool.url)));
 
-    
+
       console.log(Chalk.bold('If you think you installed all tools property, please check your PATH variable to make sure the tools are referenced there.'));
     }
   });

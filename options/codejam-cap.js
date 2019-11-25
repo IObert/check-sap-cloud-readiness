@@ -1,6 +1,6 @@
 module.exports = [{
   name: "NPM Proxy Settings",
-  command: " npm config get @sap:registry",
+  command: "npm config get @sap:registry",
   parser: "https://npm.sap.com",
   skipVersion: true,
   url: "https://help.sap.com/viewer/4505d0bdaf4948449b7f7379d24d0f0d/2.0.03/en-US/726e5d41462c4eb29eaa6cc83ff41e84.html"

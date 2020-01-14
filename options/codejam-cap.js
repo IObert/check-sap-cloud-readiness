@@ -11,10 +11,10 @@ module.exports = [{
   minVersion: "6.0.0",
   url: "https://developers.sap.com/tutorials/cp-cf-download-cli.html/"
 }, {
-  name: "Core Data Services CLI",
+  name: "Core Data Services Dev Kit",
   command: "cds -v",
-  parser: "@sap/cds:",
-  minVersion: "3.0.0",
+  parser: null,
+  minVersion: "1.4.2",
   url: "https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/e7806faa5ea24746a52aeb15da92c02f.html"
 }, {
   name: "CF CLI - MultiApps Plugin",

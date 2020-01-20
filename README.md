@@ -18,10 +18,10 @@ This tool does **NOT** require an installation and shouldn't be installed at all
 Simply run this tool with:
 ```shell
 # Generic version
-npx check-sap-cloud-readiness --[dev-activity1] --[dev-activity2]
+npx check-sap-cloud-readiness -[dev-activity1] --[dev-activity2]
 
 # For instance:
-npx check-sap-cloud-readiness --codejam-cap
+npx check-sap-cloud-readiness -codejam-cap
 ```
 
 The tool will output a list fo all required tools and indicate whether the tools are installed or not. The tool will also suggest steps how to install the missing tool.

@@ -19,13 +19,13 @@
     "author": "SAP",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/SAP/check-sap-cloud-readiness/issues"
+        "url": "https://github.com/IObert/check-sap-cloud-readiness/issues"
     },
-    "homepage": "https://github.com/SAP/check-sap-cloud-readiness#readme",
+    "homepage": "https://github.com/IObert/check-sap-cloud-readiness#readme",
     "dependencies": {
-        "chalk": "^2.4.2",
-        "cli-table3": "^0.5.1",
-        "compare-versions": "^3.5.0",
-        "terminal-link": "^1.3.0"
+        "chalk": "^4.1.0",
+        "cli-table3": "^0.6.0",
+        "compare-versions": "^3.6.0",
+        "terminal-link": "^2.1.1"
     }
 }
